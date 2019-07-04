@@ -6,6 +6,21 @@ const INITIAL_STATE = {
   classes: 10,
 };
 
+const InputField = ({ value, onChange, label, name, min = 1, max = 20, type = "number" }) => (
+  <>
+    <label htmlFor={name}>{label}</label>
+    <input
+      id={name}
+      name={name}
+      type={type}
+      min={min}
+      max={max}
+      value={value}
+      onChange={onChange}
+    />
+  </>
+);
+
 const Calculator = () => {
 
   const [state, setState] = useState(INITIAL_STATE);
@@ -30,34 +45,26 @@ const Calculator = () => {
     <>
       <ol>
         <li>
-          <label htmlFor="breakpoints">Breakpoints:</label>
-          <input
+          <InputField
+            label="Breakpoints:"
             name="breakpoints"
-            type="number"
-            min="1"
-            max="10"
             value={breakpoints}
             onChange={handleChange}
+            max={10}
           />
         </li>
         <li>
-          <label htmlFor="values">Values:</label>
-          <input
+          <InputField
+            label="Values:"
             name="values"
-            type="number"
-            min="1"
-            max="20"
             value={values}
             onChange={handleChange}
           />
         </li>
         <li>
-          <label htmlFor="classes">Classes:</label>
-          <input
+          <InputField
+            label="Classes:"
             name="classes"
-            type="number"
-            min="1"
-            max="20"
             value={classes}
             onChange={handleChange}
           />
